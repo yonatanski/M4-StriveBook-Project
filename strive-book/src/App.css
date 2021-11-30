@@ -46,3 +46,15 @@ footer {
   z-index: 1;
   height: 100px;
 }
+
+.jambo {
+  background-image: url("https://www.thespruce.com/thmb/YPjbjXExku3d_pmVrVrlgnJEwPY=/4543x2555/smart/filters:no_upscale()/how-to-sell-used-books-for-the-most-cash-1388970-01-7815a93d4c95431999e1b5192ece1699.jpg");
+  background-size: cover;
+  height: 400px;
+}
+.jambo h1 {
+  font-size: 7rem;
+}
+.body {
+  background-color: #282c34;
+}
