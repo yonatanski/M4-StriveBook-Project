@@ -1,9 +1,14 @@
 import "./App.css"
 import "bootstrap/dist/css/bootstrap.min.css"
+import MyNav from "./Components/MyNav"
+import MyFooter from "./Components/MyFooter"
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header"></header>
+    <div>
+      <MyNav title="StriveBooks" />
+
+      <MyFooter />
     </div>
   )
 }
