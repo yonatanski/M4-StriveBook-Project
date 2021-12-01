@@ -58,3 +58,8 @@ footer {
 .body {
   background-color: #282c34;
 }
+.cardimg {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
