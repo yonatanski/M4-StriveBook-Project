@@ -1,5 +1,6 @@
 import React from "react"
 import { Card, Container, Row, Col } from "react-bootstrap"
+import CommentArea from "./CommentArea"
 
 import SciFi from "../data/scifi.json"
 
@@ -27,6 +28,7 @@ class SingleBook extends React.Component {
             <h5>{this.props.author}</h5>
           </div>
         </div>
+        {this.state.selected && <CommentArea asin={this.props.book.asin} />}
       </>
     )
   }

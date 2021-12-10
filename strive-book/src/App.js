@@ -15,7 +15,7 @@ function App() {
       <WarningSign color="primary" />
       <MyNav title="StriveBooks" />
       <Welcome />
-      <SingleBook book={SciFi[0]} />
+      {/* <SingleBook book={SciFi[0]}/> */}
       {/* <LatestRelease /> */}
       <BookList books={SciFi} />
 

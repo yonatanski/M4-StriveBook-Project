@@ -33,7 +33,7 @@ class BookList extends React.Component {
               b.title.toLowerCase().includes(this.state.searchQuery)
             )
             .map((b) => (
-              <Col sm={6} md={3} className=" ml-3 sm-6 md-3 lg-4 ">
+              <Col sm={6} md={3} className="ml-3 sm-6 md-3 lg-4">
                 <SingleBook book={b} />
               </Col>
             ))}
