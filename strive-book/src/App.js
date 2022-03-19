@@ -12,14 +12,14 @@ import SciFi from "./scifi.json"
 function App() {
   return (
     <div>
-      <WarningSign color="primary" />
+      {/* <WarningSign color="primary" /> */}
       <MyNav title="StriveBooks" />
       <Welcome />
       {/* <SingleBook book={SciFi[0]}/> */}
       {/* <LatestRelease /> */}
       <BookList books={SciFi} />
 
-      <MyFooter />
+      {/* <MyFooter /> */}
     </div>
   )
 }

@@ -1,38 +1,32 @@
 import React from "react"
 import { ListGroup, Button } from "react-bootstrap"
 
-const deleteComment = async (asin) => {
-  try {
-    let response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/comments/" + asin,
-      {
+function SingleComment(props) {
+  const deleteComment = async (asin) => {
+    try {
+      // console.log(dleteID)
+      let response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + asin, {
         method: "DELETE",
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWIyMjM5MDY4YjNlMDAwMTViN2FkMTUiLCJpYXQiOjE2MzkwNjQ0NjQsImV4cCI6MTY0MDI3NDA2NH0.qzHAd11ImXmCz4nXdz6nuk8SmkBEgdjIKSt6uJVPpLM",
+          Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTgyOWFhZmFhY2FhMjAwMTU1MmExZjIiLCJpYXQiOjE2NDcwNzcwODgsImV4cCI6MTY0ODI4NjY4OH0._G5MVtShZZlAuU1aWMtFyGlOQiq7uPBY0cFw6b9eBFE",
         },
+      })
+      if (response.ok) {
+        alert("Comment deleteddd")
+      } else {
+        console.log("error")
+        alert("Comment NOT deletedd!")
       }
-    )
-    if (response.ok) {
-      alert("Comment deleted")
-    } else {
-      console.log("error")
-      alert("Comment NOT deleted!")
+    } catch (error) {
+      alert("Comment NOT deleted")
     }
-  } catch (error) {
-    alert("Comment NOT deleted!")
   }
-}
-
-function SingleComment({ comment }) {
   return (
     <>
-      <ListGroup.Item>{comment.comment}</ListGroup.Item>
-      <Button
-        variant="danger"
-        className="ml-2"
-        onClick={() => deleteComment(comment._id)}
-      >
+      <ListGroup.Item>
+        {props.comment.comment}-{props.comment.rate}
+      </ListGroup.Item>
+      <Button variant="danger" className="ml-2" onClick={() => deleteComment(props.comment._id)}>
         D
       </Button>
     </>

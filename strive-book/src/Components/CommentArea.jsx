@@ -8,22 +8,27 @@ import Error from "./Error"
 class CommentArea extends Component {
   state = {
     comment: [], // fetched comment gonna put here
-    isLoading: true,
+    isLoading: false,
     isError: false,
   }
 
-  componentDidMount = async () => {
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.asin !== this.props.asin) {
+      this.setState({
+        isLoading: true,
+      })
+      this.fecthingComments()
+    }
+  }
+  fecthingComments = async () => {
     try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/commen/" + this.props.asin,
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWIyMjM5MDY4YjNlMDAwMTViN2FkMTUiLCJpYXQiOjE2MzkwNjQ0NjQsImV4cCI6MTY0MDI3NDA2NH0.qzHAd11ImXmCz4nXdz6nuk8SmkBEgdjIKSt6uJVPpLM",
-          },
-        }
-      )
+      let response = await fetch(`https://striveschool-api.herokuapp/api/comments/${this.props.asin}`, {
+        headers: {
+          Authorization: process.env.REACT_APP_TOKEN,
+        },
+      })
       console.log(response)
+      console.log(process.env.REACT_APP_BE_API)
       if (response.ok) {
         let comments = await response.json()
         this.setState({ comment: comments, isLoading: false, isError: false })
@@ -36,11 +41,10 @@ class CommentArea extends Component {
       this.setState({ isLoading: false, isError: true })
     }
   }
-
   render() {
     return (
       <>
-        <AddComment asin={this.props.asin} />
+        <AddComment asin={this.props.asin} fecthingCommentsAuto={this.fecthingComments} />
         {this.state.isLoading && <Loading />}
         {this.state.isError && <Error />}
         <CommentList commentsToShow={this.state.comment} />

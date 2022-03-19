@@ -47,6 +47,12 @@ footer {
   height: 100px;
 }
 
+.card-img-top {
+  width: 100%;
+
+  object-fit: cover;
+}
+
 .jambo {
   background-image: url("https://www.thespruce.com/thmb/YPjbjXExku3d_pmVrVrlgnJEwPY=/4543x2555/smart/filters:no_upscale()/how-to-sell-used-books-for-the-most-cash-1388970-01-7815a93d4c95431999e1b5192ece1699.jpg");
   background-size: cover;
@@ -77,22 +83,19 @@ h5 {
 }
 
 .card {
-  background: #fff;
+  background: rgb(8, 8, 8);
   width: 24em;
   border-radius: 0.6em;
   margin: 1em;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25),
-    0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03);
+  box-shadow: 0 13px 27px -5px hsla(240, 30.1%, 28%, 0.25), 0 8px 16px -8px hsla(0, 0%, 0%, 0.3), 0 -6px 16px -6px hsla(0, 0%, 0%, 0.03);
   transition: all ease 200ms;
 }
 
 .card:hover {
   transform: scale(1.03);
-  box-shadow: 0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12),
-    0 8px 32px -8px hsla(0, 0%, 0%, 0.14),
-    0 -6px 32px -6px hsla(0, 0%, 0%, 0.02);
+  box-shadow: 0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12), 0 8px 32px -8px hsla(0, 0%, 0%, 0.14), 0 -6px 32px -6px hsla(0, 0%, 0%, 0.02);
 }
 
 .card img {

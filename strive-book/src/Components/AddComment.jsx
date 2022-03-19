@@ -6,27 +6,41 @@ class AddComment extends Component {
     comment: {
       comment: "",
       rate: 1,
-      elementId: this.props.asin,
+      elementId: null,
     },
+  }
+
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.asin !== this.props.asin) {
+      this.setState({
+        comment: {
+          ...this.state.comment,
+          elementId: this.props.asin,
+        },
+      })
+    }
   }
 
   sendComment = async (e) => {
     e.preventDefault()
     try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/comments",
-        {
-          method: "POST",
-          body: JSON.stringify(this.state.comment),
-          headers: {
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWIyMjM5MDY4YjNlMDAwMTViN2FkMTUiLCJpYXQiOjE2MzkwNjQ0NjQsImV4cCI6MTY0MDI3NDA2NH0.qzHAd11ImXmCz4nXdz6nuk8SmkBEgdjIKSt6uJVPpLM",
-          },
-        }
-      )
+      let response = await fetch("https://striveschool-api.herokuapp.com/api/comments", {
+        method: "POST",
+        body: JSON.stringify(this.state.comment),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTgyOWFhZmFhY2FhMjAwMTU1MmExZjIiLCJpYXQiOjE2NDcwNzcwODgsImV4cCI6MTY0ODI4NjY4OH0._G5MVtShZZlAuU1aWMtFyGlOQiq7uPBY0cFw6b9eBFE",
+        },
+      })
       if (response.ok) {
         alert("Comment was sent")
+        this.setState({ comment: { comment: "", rate: 1 } })
+        this.props.fecthingCommentsAuto()
+        this.setState({
+          comment: "",
+          rate: 1,
+          elementId: null,
+        })
       } else {
         console.log("error")
         alert("Something went wrong")
@@ -77,7 +91,7 @@ class AddComment extends Component {
               <option>5</option>
             </Form.Control>
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button variant="primary" className="w-100" type="submit">
             Submit
           </Button>
         </Form>

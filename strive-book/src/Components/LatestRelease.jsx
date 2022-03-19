@@ -8,13 +8,9 @@ const LatestRelease = () => {
       <Row>
         {bookdata.map((book) => (
           <Col xs={12} sm={6} md={4} lg={3} className="mt-3">
-            <Card>
-              <Card.Img
-                variant="top"
-                src={book.img}
-                className=" img-fluid cardimg object-fit-cover"
-              />
-              <Card.Body>
+            <Card className="card-img-top">
+              <Card.Img variant="top" src={book.img} className=" img-fluid  cardimg object-fit-cover" />
+              <Card.Body href="#home">
                 <Card.Title>
                   <small>{book.title}</small>
                 </Card.Title>
